@@ -19,6 +19,8 @@ Description: Estimates a sparse correlation network among metabolites from
 License: MIT + file LICENSE
 Depends: R (>= 4.5.0)
 Imports:
+    igraph,
+    Matrix,
     methods,
     stats,
     utils,

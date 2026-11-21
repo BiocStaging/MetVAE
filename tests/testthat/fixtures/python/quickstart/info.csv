@@ -1,0 +1,7 @@
+key,value
+workload,quickstart
+metvae,1.1.0
+torch,2.5.1
+numpy,1.26.4
+threads,8
+best_rho,1.2746360114795632

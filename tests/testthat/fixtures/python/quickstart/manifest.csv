@@ -1,0 +1,16 @@
+name,type,dims
+data,float64,100x50
+sample_names,character,100
+feature_names,character,50
+meta_age,float64,100
+meta_batch,character,100
+meta_names,character,100
+true_cor,float64,50x50
+train_loss,float64,1000
+estimate,float64,50x50
+p_sparse,float64,50x50
+pvec,float64,1225
+qvec_all,float64,10x1225
+p_adj_methods,character,10
+sec_cv_sparse,float64,50x50
+sec_cv_best_rho,float64,1
