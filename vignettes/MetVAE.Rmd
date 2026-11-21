@@ -4,7 +4,7 @@ author: "Huang Lin"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{Correlation networks with MetVAE}
+  %\VignetteIndexEntry{Correlation networks from untargeted metabolomics data with MetVAE}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
