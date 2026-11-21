@@ -17,7 +17,7 @@ Description: Estimates a sparse correlation network among metabolites from
     estimator with a cross-validated penalty. Results can be exported as
     GraphML networks.
 License: MIT + file LICENSE
-Depends: R (>= 4.5.0)
+Depends: R (>= 4.6.0)
 Imports:
     igraph,
     Matrix,
@@ -28,6 +28,7 @@ Imports:
     withr,
     torch (>= 0.16.0)
 Suggests:
+    BiocStyle,
     knitr,
     rmarkdown,
     testthat (>= 3.0.0)

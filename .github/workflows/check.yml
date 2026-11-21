@@ -1,10 +1,13 @@
-# R CMD check of MetVAE on Linux, macOS, and Windows, with and without the
-# LibTorch library of the package torch.
+# Job 'check': R CMD check of MetVAE on Linux, macOS, and Windows with
+# R-release, with and without the LibTorch library of the package torch.
 #
 # libtorch: true   LibTorch is installed; the model is fitted in the
 #                  examples, tests, and vignette.
 # libtorch: false  The package torch is installed without LibTorch; the
 #                  examples, tests, and vignette use the stored fits.
+#
+# Job 'bioc-devel': R CMD check and BiocCheck in the Bioconductor devel
+# container (x86_64 Linux) with LibTorch installed.
 name: R-CMD-check
 
 on:
@@ -60,3 +63,63 @@ jobs:
           args: 'c("--no-manual")'
           error-on: '"warning"'
           upload-snapshots: false
+
+  bioc-devel:
+    name: Bioconductor devel (Linux, LibTorch true)
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    container: bioconductor/bioconductor_docker:devel
+    env:
+      GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
+      R_KEEP_PKG_SOURCE: yes
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Report R and Bioconductor versions
+        run: |
+          cat(R.version.string, "\n")
+          cat("Bioconductor", as.character(BiocManager::version()), "\n")
+        shell: Rscript {0}
+
+      - name: Install dependencies
+        run: |
+          install.packages("remotes")
+          BiocManager::install(c("BiocCheck", "rcmdcheck"), ask = FALSE,
+                               update = FALSE)
+          remotes::install_deps(dependencies = TRUE, upgrade = "never",
+                                repos = BiocManager::repositories())
+        shell: Rscript {0}
+
+      - name: Install LibTorch
+        run: |
+          torch::install_torch()
+          cat("LibTorch:", torch::torch_is_installed(), "\n")
+        shell: Rscript {0}
+
+      - name: Build
+        run: R CMD build .
+
+      - name: R CMD check
+        run: |
+          tarball <- Sys.glob("MetVAE_*.tar.gz")
+          rcmdcheck::rcmdcheck(tarball, args = "--no-manual",
+                               error_on = "warning", check_dir = "check")
+        shell: Rscript {0}
+
+      # Support-site registration is checked locally before submission.
+      - name: BiocCheck
+        run: |
+          tarball <- Sys.glob("MetVAE_*.tar.gz")
+          BiocCheck::BiocCheck(tarball, `new-package` = TRUE,
+                               `no-check-bioc-help` = TRUE,
+                               `quit-with-status` = TRUE)
+        shell: Rscript {0}
+
+      - name: Upload check results
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: bioc-devel-check
+          path: |
+            check
+            *.BiocCheck

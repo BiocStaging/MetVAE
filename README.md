@@ -38,7 +38,7 @@ estimator with a penalty chosen by cross-validation (`sparse_by_sec()`).
 
 ## Installation
 
-MetVAE requires R 4.5 or later. Install it from GitHub until it is available
+MetVAE requires R 4.6 or later. Install it from GitHub until it is available
 from Bioconductor:
 
 ```r
