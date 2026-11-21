@@ -52,30 +52,12 @@ metvae_sim_data <- function(n, d, cor_pairs = 0L, mu, sigma = 1, x = NULL,
              call. = FALSE)
     }
     if (!is.null(seed)) {
-        .with_seed(seed, .simulate(n, d, cor_pairs, mu, sigma, x, cont_list,
-                                   cat_list, da_prop))
+        withr::with_seed(seed, .simulate(n, d, cor_pairs, mu, sigma, x,
+                                         cont_list, cat_list, da_prop))
     } else {
         .simulate(n, d, cor_pairs, mu, sigma, x, cont_list, cat_list,
                   da_prop)
     }
-}
-
-# Evaluates 'expr' after set.seed(seed) and restores the previous state.
-.with_seed <- function(seed, expr) {
-    old <- if (exists(".Random.seed", envir = globalenv())) {
-        get(".Random.seed", envir = globalenv())
-    } else {
-        NULL
-    }
-    on.exit({
-        if (is.null(old)) {
-            rm(".Random.seed", envir = globalenv())
-        } else {
-            assign(".Random.seed", old, envir = globalenv())
-        }
-    }, add = TRUE)
-    set.seed(seed)
-    force(expr)
 }
 
 # Simulation of metvae_sim_data().

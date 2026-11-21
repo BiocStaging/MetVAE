@@ -11,7 +11,8 @@
     for (s in seq(1L, n, by = bs)) {
         idx <- perm[s:min(s + bs - 1L, n)]$add(1L)
         y <- pp$clr_data$index_select(1L, idx)
-        if (pp$has_zero && .item(pp$rows_with_nan$index_select(1L, idx)$any())) {
+        batch_nan <- .item(pp$rows_with_nan$index_select(1L, idx)$any())
+        if (pp$has_zero && batch_nan) {
             y <- .random_initial(y, n, pp$num_zero, pp$clr_mean, pp$clr_sd)
         }
         loss <- .training_step(m, y)

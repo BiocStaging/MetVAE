@@ -15,7 +15,7 @@
         sigma <- m[(p_prime + 1L):(p_prime + 1L), , drop = FALSE]$exp()$
             clamp(min = sigma_floor)
         inv_sigma <- .rdiv(1, sigma)
-        mu <- X$matmul(m[1:p_prime, , drop = FALSE])
+        mu <- X$matmul(m[seq_len(p_prime), , drop = FALSE])
         e <- torch::torch_where(obs, Y - mu, zero)
         ll_unc <- (obs_f * (sigma$log()$neg() -
                                 (e * inv_sigma)$pow(2)$mul(0.5)))$sum()

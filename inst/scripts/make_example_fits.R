@@ -14,11 +14,10 @@ censor <- function(y, prop) {
 }
 
 # Small fit for the help page examples.
+set.seed(1)
 meta_ex <- data.frame(age = stats::rnorm(60L, 50, 8),
                       batch = rep(c("A", "B"), 30L),
                       row.names = paste0("s", 0:59))
-set.seed(1)
-meta_ex$age <- stats::rnorm(60L, 50, 8)
 sim_ex <- metvae_sim_data(n = 60L, d = 15L, cor_pairs = 3L, mu = 10:14,
                           x = meta_ex, cont_list = "age",
                           cat_list = "batch", seed = 1L)

@@ -19,7 +19,7 @@
     th <- th$expand_as(Y)
     unc <- torch::torch_isnan(Y)$logical_not()
     cens <- unc$logical_not()
-    beta <- init[1:p_prime, , drop = FALSE]
+    beta <- init[seq_len(p_prime), , drop = FALSE]
     sigma <- init[(p_prime + 1L):(p_prime + 1L), , drop = FALSE]$exp()$
         clamp(min = 1e-8)
     qr <- torch::linalg_qr(X, mode = "reduced")

@@ -37,40 +37,10 @@
     x$reciprocal()$mul(a)
 }
 
-# Evaluates 'expr' with 'n' intra-op torch threads (all cores when n < 1)
-# and restores the previous setting afterwards.
-.with_threads <- function(n, expr) {
-    previous <- torch::torch_get_num_threads()
-    if (is.null(n) || n < 1L) {
-        n <- parallel::detectCores(logical = TRUE)
-        if (is.na(n)) {
-            n <- 1L
-        }
-    }
-    n <- as.integer(n)
-    if (n != previous) {
-        suppressWarnings(torch::torch_set_num_threads(n))
-        on.exit(suppressWarnings(torch::torch_set_num_threads(previous)),
-                add = TRUE)
-    }
-    force(expr)
-}
-
 # Evaluates 'expr' with float64 as the default torch dtype.
 .with_float64 <- function(expr) {
     previous <- torch::torch_get_default_dtype()
     torch::torch_set_default_dtype(torch::torch_float64())
     on.exit(torch::torch_set_default_dtype(previous), add = TRUE)
     force(expr)
-}
-
-# Torch device for the 'use_gpu' argument.
-.select_device <- function(use_gpu, verbose) {
-    if (isTRUE(use_gpu)) {
-        if (torch::cuda_is_available()) {
-            return(torch::torch_device("cuda"))
-        }
-        .inform(verbose, "CUDA not available. Falling back to CPU.")
-    }
-    torch::torch_device("cpu")
 }

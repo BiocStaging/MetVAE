@@ -25,10 +25,13 @@ Imports:
     stats,
     utils,
     SummarizedExperiment,
+    withr,
     torch (>= 0.16.0)
 Suggests:
-    testthat (>= 3.0.0),
-    withr
+    knitr,
+    rmarkdown,
+    testthat (>= 3.0.0)
+VignetteBuilder: knitr
 SystemRequirements: LibTorch (https://pytorch.org/), downloaded once by
     running torch::install_torch() after the R package torch is installed
 biocViews: Software, Metabolomics, MassSpectrometry, Network,

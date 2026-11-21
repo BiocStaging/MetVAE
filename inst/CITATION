@@ -1,0 +1,19 @@
+bibentry(
+    bibtype = "Article",
+    title = paste("Protocol for constructing correlation-based molecular",
+                  "networks from large-scale untargeted metabolomics data"),
+    author = c(person("Huang", "Lin"), person("Lijun", "Zhang"),
+               person("Ali", "Lotfi"), person("Alan", "Jarmusch"),
+               person("Iris", "Lee"), person("Adam", "Kim"),
+               person(c("James", "T."), "Morton"),
+               person("Alexander", "Aksenov")),
+    journal = "bioRxiv",
+    year = "2026",
+    doi = "10.1101/2025.04.26.649581",
+    note = "PMCID: PMC13131467",
+    textVersion = paste(
+        "Lin H, Zhang L, Lotfi A, Jarmusch A, Lee I, Kim A, Morton JT,",
+        "Aksenov A (2026). Protocol for constructing correlation-based",
+        "molecular networks from large-scale untargeted metabolomics data.",
+        "bioRxiv. doi:10.1101/2025.04.26.649581")
+)

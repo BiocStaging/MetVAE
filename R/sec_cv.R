@@ -44,7 +44,7 @@
 .refine_grid <- function(c_coarse, best_c, points) {
     i <- match(best_c, c_coarse)
     k <- length(c_coarse)
-    bounds <- if (i == 1L) c_coarse[1:2] else if (i == k) {
+    bounds <- if (i == 1L) c_coarse[c(1L, 2L)] else if (i == k) {
         c_coarse[(k - 1L):k]
     } else {
         c_coarse[c(i - 1L, i + 1L)]

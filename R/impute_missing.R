@@ -47,7 +47,7 @@
     B <- X$t()$matmul(W * Y_filled)$t()$unsqueeze(3)
     svals <- torch::linalg_svdvals(A)
     cond <- svals[, 1] / svals[, p_prime]$clamp(min = eps64)
-    rank <- (svals > svals[, 1:1, drop = FALSE] * (p_prime * eps64))$
+    rank <- (svals > svals[, 1L, drop = FALSE] * (p_prime * eps64))$
         sum(dim = 2L)
     cond_r <- as.numeric(cond)
     well <- which(is.finite(cond_r) & cond_r < 1 / eps64)
