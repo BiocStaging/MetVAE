@@ -1,5 +1,13 @@
 # MetVAE
 
+MetVAE is available for R, for Python, and through a graphical interface.
+
+| Platform | Install | Source |
+| --- | --- | --- |
+| R (this package) | `BiocManager::install("MATRIX-Research-Lab/MetVAE")` | [GitHub](https://github.com/MATRIX-Research-Lab/MetVAE) |
+| Python | `pip install metvae` | [GitHub](https://github.com/MATRIX-Research-Lab/MetVAE-PyPI), [PyPI](https://pypi.org/project/metvae/) |
+| Graphical interface | See its README | [GNPS_Local](https://github.com/Some-Earth-2514/GNPS_Local) |
+
 MetVAE builds a correlation network from untargeted metabolomics data. The
 input is a table of metabolite abundances, with one row per sample and one
 column per metabolite, and an optional table of sample information such as
@@ -14,9 +22,6 @@ Two methods decide which pairs to keep: Fisher z-tests with a multiple-testing
 correction (`sparse_by_p()`), and the sparse estimation of correlation (SEC)
 estimator with a penalty chosen by cross-validation (`sparse_by_sec()`).
 
-This is the R implementation. A Python implementation is available as
-[`metvae` on PyPI](https://pypi.org/project/metvae/).
-
 ## Table of contents
 
 - [Installation](#installation)
@@ -27,6 +32,7 @@ This is the R implementation. A Python implementation is available as
 - [Reproducibility](#reproducibility)
 - [Run time and memory](#run-time-and-memory)
 - [Troubleshooting](#troubleshooting)
+- [Getting help](#getting-help)
 - [Citation](#citation)
 - [License](#license)
 
@@ -303,6 +309,13 @@ data sets.
 | `No correlation estimates. Run fit <- get_corr(fit) first.` | `sparse_by_p()` or `sparse_by_sec()` was called before `get_corr()`. | Run `fit <- get_corr(fit)`. |
 | `Best c = ... occurs at the UPPER edge of c_grid` | The penalty grid is too narrow. | Use a wider `c_grid`, for example `1:20`. |
 | R stops responding or runs out of memory | Very many metabolites. | Raise `feature_zero_threshold`, or use `pq = "edges"` in `sparse_by_p()`. |
+
+## Getting help
+
+Report bugs and ask questions on the
+[GitHub issue page](https://github.com/MATRIX-Research-Lab/MetVAE/issues).
+Include the code you ran, the full error message, and the output of
+`sessionInfo()`.
 
 ## Citation
 
