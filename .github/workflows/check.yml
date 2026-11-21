@@ -90,10 +90,13 @@ jobs:
                                 repos = BiocManager::repositories())
         shell: Rscript {0}
 
+      # A new R session is needed to load LibTorch after its installation.
       - name: Install LibTorch
-        run: |
-          torch::install_torch()
-          cat("LibTorch:", torch::torch_is_installed(), "\n")
+        run: torch::install_torch()
+        shell: Rscript {0}
+
+      - name: Report torch status
+        run: cat("LibTorch:", torch::torch_is_installed(), "\n")
         shell: Rscript {0}
 
       - name: Build
