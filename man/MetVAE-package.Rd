@@ -39,5 +39,10 @@ Useful links:
 \author{
 \strong{Maintainer}: Huang Lin \email{huanglinfrederick@gmail.com} (\href{https://orcid.org/0000-0002-4892-7871}{ORCID})
 
+Authors:
+\itemize{
+  \item Huang Lin \email{huanglinfrederick@gmail.com} (\href{https://orcid.org/0000-0002-4892-7871}{ORCID})
+}
+
 }
 \keyword{internal}

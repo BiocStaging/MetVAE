@@ -1,7 +1,8 @@
 # Sparse estimation of a correlation matrix (SEC): accelerated proximal
 # gradient iterations with projection onto the positive semidefinite cone,
 # rescaling to unit diagonal, and a hard threshold. Adapted from the MATLAB
-# code of Cui, Leng and Sun (2016).
+# code sec.m of Cui, Leng and Sun (2016) and distributed with the permission
+# of Chenlei Leng (email, November 2026).
 
 # Projection onto the positive semidefinite cone, retried with a larger
 # jitter when the eigendecomposition fails.

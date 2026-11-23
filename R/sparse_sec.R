@@ -41,6 +41,9 @@
 #' result is symmetrized, as in the Python package metvae. In Cui, Leng and
 #' Sun (2016) the standardization applies to the data variables.
 #'
+#' The implementation is adapted from the MATLAB code of Cui, Leng and Sun
+#' (2016) and is distributed with the permission of Chenlei Leng.
+#'
 #' @references
 #' Cui Y, Leng C, Sun D. Sparse estimation of high-dimensional correlation
 #' matrices. Computational Statistics and Data Analysis 93 (2016) 390-403.

@@ -328,10 +328,13 @@ https://doi.org/10.1101/2025.04.26.649581
 
 `citation("MetVAE")` prints the BibTeX entry.
 
-The SEC implementation is adapted from the MATLAB reference code released by
-Leng's group at the University of Warwick, which accompanies Cui, Leng and Sun
-(2016), Computational Statistics and Data Analysis 93, 390-403,
-https://doi.org/10.1016/j.csda.2014.10.001.
+## Acknowledgment
+
+The SEC implementation is adapted from the MATLAB code of Cui, Leng and Sun
+(2016), Sparse estimation of high-dimensional correlation matrices,
+Computational Statistics and Data Analysis 93, 390-403,
+https://doi.org/10.1016/j.csda.2014.10.001. We thank Chenlei Leng for
+permission to distribute it.
 
 ## License
 

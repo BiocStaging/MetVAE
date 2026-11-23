@@ -78,6 +78,9 @@ chosen by K-fold cross-validation over
 The columns of Rn are centered and scaled before the iterations and the
 result is symmetrized, as in the Python package metvae. In Cui, Leng and
 Sun (2016) the standardization applies to the data variables.
+
+The implementation is adapted from the MATLAB code of Cui, Leng and Sun
+(2016) and is distributed with the permission of Chenlei Leng.
 }
 \examples{
 if (requireNamespace("torch", quietly = TRUE) &&

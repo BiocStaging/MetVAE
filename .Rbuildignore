@@ -3,7 +3,4 @@
 ^\.github$
 ^\.gitignore$
 ^LICENSE\.md$
-^\.claude$
-^\.positai$
-^CLAUDE\.md$
 ^data-raw$

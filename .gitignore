@@ -3,7 +3,6 @@
 .RData
 .Ruserdata
 .DS_Store
-.positai
 inst/doc
 *.tar.gz
 MetVAE.Rcheck/
